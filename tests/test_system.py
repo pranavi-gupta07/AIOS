@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import threading
@@ -20,8 +21,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 @pytest.fixture(scope="module")
 def system(tmp_path_factory, store):
-    runtime = os.environ.get("XDG_RUNTIME_DIR") or "/tmp"
-    sock = os.path.join(runtime, f"aios-test-{os.getpid()}.sock")
+    if not hasattr(socket, "AF_UNIX"):
+        sock = f"127.0.0.1:{9090 + os.getpid() % 1000}"
+    else:
+        runtime = os.environ.get("XDG_RUNTIME_DIR") or "/tmp"
+        sock = os.path.join(runtime, f"aios-test-{os.getpid()}.sock")
     overrides = {"daemon": {"socket": sock}, "targets": {"edge": {"port": 7301}, "cloud": {"port": 7302}},
                  "policy": {"rules": [{"match": {"comm": "aios-private"}, "privacy": "device"}]}}
     cfg = load_config(None, overrides)
@@ -116,6 +120,8 @@ def test_explain_and_status(system):
 
 
 def test_admin_policy_rule_by_process_name(system):
+    if sys.platform == "win32":
+        pytest.skip("prctl process comm naming is Linux-specific")
     _, sock = system
     script = ("import numpy as np, aios.api as a; c=a.Client(%r, transport='unix'); "
               "print(c.infer('doc-encoder', np.zeros((256,768),dtype=np.float32), objective='latency').target)") % sock
@@ -130,12 +136,13 @@ def test_kernel_abi_matches_header():
     header = (ROOT / "kernel" / "aios_uapi.h").read_text()
     assert re.search(r"AIOS_IOC_MAGIC 'A'", header)
     cc = shutil.which("cc") or shutil.which("gcc")
-    if not cc:
-        pytest.skip("no C compiler")
+    if sys.platform == "win32" or not cc:
+        pytest.skip("kernel C header is Linux-specific")
     src = ('#include <stdio.h>\n#include "aios_uapi.h"\nint main(void){printf("%lu %lu %lu %lu %lu %lu",'
            "(unsigned long)AIOS_IOC_SUBMIT,(unsigned long)AIOS_IOC_WAIT,(unsigned long)AIOS_IOC_REGISTER,"
            "(unsigned long)AIOS_IOC_FETCH,(unsigned long)AIOS_IOC_COMPLETE,(unsigned long)AIOS_IOC_STATS);return 0;}")
-    tmp = Path(os.environ.get("TMPDIR", "/tmp")) / f"aios_abi_{os.getpid()}"
+    import tempfile
+    tmp = Path(os.environ.get("TMPDIR", tempfile.gettempdir())) / f"aios_abi_{os.getpid()}"
     tmp.with_suffix(".c").write_text(src)
     subprocess.run([cc, "-I", str(ROOT / "kernel"), "-o", str(tmp), str(tmp.with_suffix(".c"))], check=True)
     vals = [int(v) for v in subprocess.run([str(tmp)], capture_output=True, text=True, check=True).stdout.split()]

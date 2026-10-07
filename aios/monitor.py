@@ -96,7 +96,7 @@ class HostMonitor:
         return None if v is None else v / 1e6
 
     def snapshot(self):
-        load1, load5, load15 = os.getloadavg()
+        load1, load5, load15 = os.getloadavg() if hasattr(os, "getloadavg") else (0.0, 0.0, 0.0)
         return {"cpu_utilization": round(self.cpu_utilization(), 4), "loadavg": [load1, load5, load15],
                 "cpus": os.cpu_count(), "memory": self.memory(), "thermal": self.thermal(),
                 "battery": self.battery(), "network": self.network(),

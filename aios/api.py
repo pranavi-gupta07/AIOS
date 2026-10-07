@@ -63,12 +63,32 @@ class Client:
             if transport == "kernel":
                 raise AIOSError(f"kernel transport requested but {device} has no registered daemon")
             self.socket_path = _socket_path(socket_path)
+            self._connect_socket()
+            self.transport = "unix"
+
+    def _connect_socket(self):
+        if self._sock:
+            try:
+                self._sock.close()
+            except OSError:
+                pass
+        if ":" in str(self.socket_path) or not hasattr(socket, "AF_UNIX"):
+            if ":" in str(self.socket_path):
+                host, port = str(self.socket_path).rsplit(":", 1)
+                port = int(port)
+            else:
+                host, port = "127.0.0.1", 9090
+            self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                self._sock.connect((host, port))
+            except OSError as exc:
+                raise AIOSError(f"cannot reach aiosd at {self.socket_path}: {exc}") from exc
+        else:
             self._sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
             try:
                 self._sock.connect(self.socket_path)
             except OSError as exc:
                 raise AIOSError(f"cannot reach aiosd at {self.socket_path}: {exc}") from exc
-            self.transport = "unix"
 
     def close(self):
         if self._sock:
@@ -92,8 +112,13 @@ class Client:
             reply, out = protocol.decode(blob)
         else:
             with self._lock:
-                protocol.send(self._sock, header, arrays)
-                reply, out = protocol.recv(self._sock)
+                try:
+                    protocol.send(self._sock, header, arrays)
+                    reply, out = protocol.recv(self._sock)
+                except (ConnectionError, OSError):
+                    self._connect_socket()
+                    protocol.send(self._sock, header, arrays)
+                    reply, out = protocol.recv(self._sock)
         if not reply.get("ok"):
             raise AIOSError(reply.get("error", "request failed"))
         return reply, out

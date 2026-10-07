@@ -34,12 +34,14 @@ def _comm(pid):
 
 
 def peer_credentials(sock):
-    try:
-        raw = sock.getsockopt(socket.SOL_SOCKET, socket.SO_PEERCRED, struct.calcsize("3i"))
-        pid, uid, gid = struct.unpack("3i", raw)
-        return {"pid": pid, "uid": uid, "gid": gid, "comm": _comm(pid), "transport": "unix"}
-    except OSError:
-        return {"transport": "unix"}
+    if hasattr(socket, "SO_PEERCRED"):
+        try:
+            raw = sock.getsockopt(socket.SOL_SOCKET, socket.SO_PEERCRED, struct.calcsize("3i"))
+            pid, uid, gid = struct.unpack("3i", raw)
+            return {"pid": pid, "uid": uid, "gid": gid, "comm": _comm(pid), "transport": "unix"}
+        except OSError:
+            pass
+    return {"transport": "unix"}
 
 
 def dispatch(engine, header, arrays, client, server=None):
@@ -106,24 +108,39 @@ class UnixHandler(socketserver.BaseRequestHandler):
                 return
 
 
-class UnixServer(socketserver.ThreadingUnixStreamServer):
-    daemon_threads = True
-
-    def __init__(self, path, engine, owner):
-        self.engine = engine
-        self.owner = owner
-        if os.path.exists(path):
+class UnixServer:
+    def __new__(cls, path, engine, owner):
+        if ":" in str(path) or not hasattr(socket, "AF_UNIX"):
+            if ":" in str(path):
+                host, port = str(path).rsplit(":", 1)
+                port = int(port)
+            else:
+                host, port = "127.0.0.1", 9090
+            server = socketserver.ThreadingTCPServer((host, port), UnixHandler)
+            server.daemon_threads = True
+            server.engine = engine
+            server.owner = owner
+            return server
+        else:
+            if os.path.exists(path):
+                try:
+                    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                    s.connect(path)
+                    s.close()
+                    raise RuntimeError(f"another aiosd is already serving {path}")
+                except ConnectionRefusedError:
+                    os.unlink(path)
+                except FileNotFoundError:
+                    pass
+            server = socketserver.ThreadingUnixStreamServer(path, UnixHandler)
+            server.daemon_threads = True
+            server.engine = engine
+            server.owner = owner
             try:
-                s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-                s.connect(path)
-                s.close()
-                raise RuntimeError(f"another aiosd is already serving {path}")
-            except ConnectionRefusedError:
-                os.unlink(path)
-            except FileNotFoundError:
+                os.chmod(path, 0o666)
+            except OSError:
                 pass
-        super().__init__(path, UnixHandler)
-        os.chmod(path, 0o666)
+            return server
 
 
 class KernelBridge:

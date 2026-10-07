@@ -37,8 +37,11 @@ class Context:
         self.quick = quick
         self.seed = seed
         os.makedirs(out_dir, exist_ok=True)
-        runtime = os.environ.get("XDG_RUNTIME_DIR") or "/tmp"
-        self.socket = os.path.join(runtime, f"aios-bench-{os.getpid()}.sock")
+        if not hasattr(socket, "AF_UNIX"):
+            self.socket = f"127.0.0.1:{9100 + os.getpid() % 500}"
+        else:
+            runtime = os.environ.get("XDG_RUNTIME_DIR") or "/tmp"
+            self.socket = os.path.join(runtime, f"aios-bench-{os.getpid()}.sock")
         self.overrides = {"daemon": {"socket": self.socket},
                           "targets": {"edge": {"port": 7201}, "cloud": {"port": 7202}}}
         self.cfg = load_config(None, self.overrides)

@@ -1,6 +1,9 @@
 import ctypes
 import errno
-import fcntl
+try:
+    import fcntl
+except ImportError:
+    fcntl = None
 import os
 
 DEFAULT_DEVICE = "/dev/aios"
@@ -47,6 +50,8 @@ IOC_STATS = _ioc(IOC_READ, 6, ctypes.sizeof(Stats))
 
 
 def available(path=DEFAULT_DEVICE):
+    if fcntl is None:
+        return False
     return os.path.exists(path) and os.access(path, os.R_OK | os.W_OK)
 
 

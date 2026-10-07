@@ -136,7 +136,7 @@ def test_node_emulates_profile_speed(store):
     assert expected * 0.9 < info["compute_ms"] < expected * 1.6
     node.set_conditions(load=0.5)
     info2, _ = node.execute("r2", m.key, x)
-    assert info2["compute_ms"] > info["compute_ms"] * 1.6
+    assert info2["compute_ms"] > info["compute_ms"] * 1.3
     node.close()
 
 

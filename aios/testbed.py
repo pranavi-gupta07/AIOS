@@ -20,6 +20,13 @@ def wait_port(host, port, timeout=10.0):
 
 
 def wait_unix(path, timeout=20.0):
+    if ":" in str(path) or not hasattr(socket, "AF_UNIX"):
+        if ":" in str(path):
+            host, port = str(path).rsplit(":", 1)
+            port = int(port)
+        else:
+            host, port = "127.0.0.1", 9090
+        return wait_port(host, port, timeout)
     end = time.monotonic() + timeout
     while time.monotonic() < end:
         if os.path.exists(path):

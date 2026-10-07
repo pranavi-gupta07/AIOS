@@ -7,8 +7,14 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = PROJECT_ROOT / "config" / "aios.toml"
 
 
+import socket
+
+
 def default_socket_path():
-    runtime = os.environ.get("XDG_RUNTIME_DIR") or f"/tmp/aios-{os.getuid()}"
+    if not hasattr(socket, "AF_UNIX"):
+        return "127.0.0.1:9090"
+    uid = getattr(os, "getuid", lambda: 1000)()
+    runtime = os.environ.get("XDG_RUNTIME_DIR") or f"/tmp/aios-{uid}"
     Path(runtime).mkdir(parents=True, exist_ok=True)
     return str(Path(runtime) / "aios.sock")
 
