@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aios"
+version = "0.1.0"
+description = "AIOS: a kernel-level AI inference scheduling and migration framework for edge-cloud computing"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26"]
+
+[project.optional-dependencies]
+eval = ["matplotlib>=3.8"]
+test = ["pytest>=8"]
+
+[project.scripts]
+aiosd = "aios.daemon:main"
+aiosctl = "aios.cli:main"
+aios-node = "aios.node:main"
+
+[tool.setuptools]
+packages = ["aios"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

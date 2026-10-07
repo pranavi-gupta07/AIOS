@@ -1,0 +1,815 @@
+{
+ "trials": [
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 0,
+   "latency_ms": 530.9040080001068,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 4,
+     "state_bytes": 786432,
+     "checkpoint_ms": 106.893,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 106.893
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 4,
+     "queue_ms": 0.01,
+     "compute_ms": 131.352,
+     "network_ms": 75.052,
+     "model_ms": 0.0,
+     "wall_ms": 206.461,
+     "device_energy_j": 0.092282,
+     "system_energy_j": 4.689614
+    },
+    {
+     "target": "local-npu",
+     "start": 4,
+     "end": 16,
+     "queue_ms": 0.005,
+     "compute_ms": 317.017,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 317.119,
+     "device_energy_j": 0.507228,
+     "system_energy_j": 0.507228
+    }
+   ],
+   "device_energy_j": 0.59951,
+   "system_energy_j": 5.196842
+  },
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 1,
+   "latency_ms": 531.3321499997983,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 3,
+     "state_bytes": 786432,
+     "checkpoint_ms": 107.511,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 107.511
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 3,
+     "queue_ms": 0.006,
+     "compute_ms": 120.923,
+     "network_ms": 73.41,
+     "model_ms": 0.0,
+     "wall_ms": 194.416,
+     "device_energy_j": 0.09335,
+     "system_energy_j": 4.325665
+    },
+    {
+     "target": "local-npu",
+     "start": 3,
+     "end": 16,
+     "queue_ms": 0.004,
+     "compute_ms": 327.245,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 327.306,
+     "device_energy_j": 0.523592,
+     "system_energy_j": 0.523592
+    }
+   ],
+   "device_energy_j": 0.616942,
+   "system_energy_j": 4.849257
+  },
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 2,
+   "latency_ms": 534.5893700000488,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 3,
+     "state_bytes": 786432,
+     "checkpoint_ms": 124.375,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 124.375
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 3,
+     "queue_ms": 0.011,
+     "compute_ms": 121.403,
+     "network_ms": 73.469,
+     "model_ms": 0.0,
+     "wall_ms": 194.947,
+     "device_energy_j": 0.091688,
+     "system_energy_j": 4.340779
+    },
+    {
+     "target": "local-npu",
+     "start": 3,
+     "end": 16,
+     "queue_ms": 0.006,
+     "compute_ms": 328.94,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 329.026,
+     "device_energy_j": 0.526304,
+     "system_energy_j": 0.526304
+    }
+   ],
+   "device_energy_j": 0.617992,
+   "system_energy_j": 4.867083
+  },
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 3,
+   "latency_ms": 536.0116550000384,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 3,
+     "state_bytes": 786432,
+     "checkpoint_ms": 116.45,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 116.45
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 3,
+     "queue_ms": 0.018,
+     "compute_ms": 120.927,
+     "network_ms": 78.541,
+     "model_ms": 0.0,
+     "wall_ms": 199.578,
+     "device_energy_j": 0.095679,
+     "system_energy_j": 4.328118
+    },
+    {
+     "target": "local-npu",
+     "start": 3,
+     "end": 16,
+     "queue_ms": 0.004,
+     "compute_ms": 327.25,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 327.321,
+     "device_energy_j": 0.5236,
+     "system_energy_j": 0.5236
+    }
+   ],
+   "device_energy_j": 0.619279,
+   "system_energy_j": 4.851718
+  },
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 4,
+   "latency_ms": 532.4514600001748,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 3,
+     "state_bytes": 786432,
+     "checkpoint_ms": 118.564,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 118.564
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 3,
+     "queue_ms": 0.006,
+     "compute_ms": 120.997,
+     "network_ms": 74.19,
+     "model_ms": 0.0,
+     "wall_ms": 195.251,
+     "device_energy_j": 0.100089,
+     "system_energy_j": 4.334983
+    },
+    {
+     "target": "local-npu",
+     "start": 3,
+     "end": 16,
+     "queue_ms": 0.005,
+     "compute_ms": 327.277,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 327.385,
+     "device_energy_j": 0.523644,
+     "system_energy_j": 0.523644
+    }
+   ],
+   "device_energy_j": 0.623733,
+   "system_energy_j": 4.858627
+  },
+  {
+   "mode": "migration",
+   "disturbed": true,
+   "trial": 5,
+   "latency_ms": 530.0477289997616,
+   "initial": "edge",
+   "final": "local-npu",
+   "path": [
+    "edge",
+    "local-npu"
+   ],
+   "migrations": [
+    {
+     "from": "edge",
+     "layer": 3,
+     "state_bytes": 786432,
+     "checkpoint_ms": 108.115,
+     "to": "local-npu",
+     "resume_network_ms": 0.0,
+     "overhead_ms": 108.115
+    }
+   ],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 3,
+     "queue_ms": 0.004,
+     "compute_ms": 120.996,
+     "network_ms": 74.461,
+     "model_ms": 0.0,
+     "wall_ms": 195.525,
+     "device_energy_j": 0.095604,
+     "system_energy_j": 4.330448
+    },
+    {
+     "target": "local-npu",
+     "start": 3,
+     "end": 16,
+     "queue_ms": 0.045,
+     "compute_ms": 327.238,
+     "network_ms": 0.0,
+     "model_ms": 0.0,
+     "wall_ms": 327.388,
+     "device_energy_j": 0.52358,
+     "system_energy_j": 0.52358
+    }
+   ],
+   "device_energy_j": 0.619184,
+   "system_energy_j": 4.854028
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 0,
+   "latency_ms": 251.39244599995436,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.009,
+     "compute_ms": 161.215,
+     "network_ms": 79.656,
+     "model_ms": 0.0,
+     "wall_ms": 241.011,
+     "device_energy_j": 0.101678,
+     "system_energy_j": 5.744213
+    }
+   ],
+   "device_energy_j": 0.101678,
+   "system_energy_j": 5.744213
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 1,
+   "latency_ms": 243.10523699978148,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.012,
+     "compute_ms": 161.195,
+     "network_ms": 76.486,
+     "model_ms": 0.0,
+     "wall_ms": 237.757,
+     "device_energy_j": 0.097344,
+     "system_energy_j": 5.739167
+    }
+   ],
+   "device_energy_j": 0.097344,
+   "system_energy_j": 5.739167
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 2,
+   "latency_ms": 243.24423300004128,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.014,
+     "compute_ms": 161.335,
+     "network_ms": 74.807,
+     "model_ms": 0.0,
+     "wall_ms": 236.214,
+     "device_energy_j": 0.102485,
+     "system_energy_j": 5.749207
+    }
+   ],
+   "device_energy_j": 0.102485,
+   "system_energy_j": 5.749207
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 3,
+   "latency_ms": 246.91883099967527,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.01,
+     "compute_ms": 161.823,
+     "network_ms": 77.546,
+     "model_ms": 0.0,
+     "wall_ms": 239.478,
+     "device_energy_j": 0.101189,
+     "system_energy_j": 5.765007
+    }
+   ],
+   "device_energy_j": 0.101189,
+   "system_energy_j": 5.765007
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 4,
+   "latency_ms": 249.1164010002649,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.007,
+     "compute_ms": 161.158,
+     "network_ms": 77.618,
+     "model_ms": 0.0,
+     "wall_ms": 238.903,
+     "device_energy_j": 0.107293,
+     "system_energy_j": 5.747818
+    }
+   ],
+   "device_energy_j": 0.107293,
+   "system_energy_j": 5.747818
+  },
+  {
+   "mode": "migration",
+   "disturbed": false,
+   "trial": 5,
+   "latency_ms": 246.0059549998732,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.011,
+     "compute_ms": 161.223,
+     "network_ms": 75.931,
+     "model_ms": 0.0,
+     "wall_ms": 237.225,
+     "device_energy_j": 0.107479,
+     "system_energy_j": 5.750301
+    }
+   ],
+   "device_energy_j": 0.107479,
+   "system_energy_j": 5.750301
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 0,
+   "latency_ms": 1521.1940140002298,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.01,
+     "compute_ms": 1430.484,
+     "network_ms": 78.086,
+     "model_ms": 0.0,
+     "wall_ms": 1508.711,
+     "device_energy_j": 0.305428,
+     "system_energy_j": 50.372364
+    }
+   ],
+   "device_energy_j": 0.305428,
+   "system_energy_j": 50.372364
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 1,
+   "latency_ms": 1521.1786640002174,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.007,
+     "compute_ms": 1429.633,
+     "network_ms": 75.202,
+     "model_ms": 0.0,
+     "wall_ms": 1504.9,
+     "device_energy_j": 0.303229,
+     "system_energy_j": 50.340367
+    }
+   ],
+   "device_energy_j": 0.303229,
+   "system_energy_j": 50.340367
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 2,
+   "latency_ms": 1513.4536180003124,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.006,
+     "compute_ms": 1429.515,
+     "network_ms": 74.989,
+     "model_ms": 0.0,
+     "wall_ms": 1504.576,
+     "device_energy_j": 0.290656,
+     "system_energy_j": 50.323688
+    }
+   ],
+   "device_energy_j": 0.290656,
+   "system_energy_j": 50.323688
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 3,
+   "latency_ms": 1508.2894070001203,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.012,
+     "compute_ms": 1429.562,
+     "network_ms": 73.209,
+     "model_ms": 0.0,
+     "wall_ms": 1502.834,
+     "device_energy_j": 0.28882,
+     "system_energy_j": 50.323499
+    }
+   ],
+   "device_energy_j": 0.28882,
+   "system_energy_j": 50.323499
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 4,
+   "latency_ms": 1509.1155269997216,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.008,
+     "compute_ms": 1429.512,
+     "network_ms": 73.885,
+     "model_ms": 0.0,
+     "wall_ms": 1503.476,
+     "device_energy_j": 0.291502,
+     "system_energy_j": 50.324429
+    }
+   ],
+   "device_energy_j": 0.291502,
+   "system_energy_j": 50.324429
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": true,
+   "trial": 5,
+   "latency_ms": 1509.44662899974,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.006,
+     "compute_ms": 1429.523,
+     "network_ms": 73.829,
+     "model_ms": 0.0,
+     "wall_ms": 1503.429,
+     "device_energy_j": 0.288604,
+     "system_energy_j": 50.32192
+    }
+   ],
+   "device_energy_j": 0.288604,
+   "system_energy_j": 50.32192
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 0,
+   "latency_ms": 244.1874609999104,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.005,
+     "compute_ms": 161.197,
+     "network_ms": 75.868,
+     "model_ms": 0.0,
+     "wall_ms": 237.134,
+     "device_energy_j": 0.099304,
+     "system_energy_j": 5.741187
+    }
+   ],
+   "device_energy_j": 0.099304,
+   "system_energy_j": 5.741187
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 1,
+   "latency_ms": 241.9035579996489,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.006,
+     "compute_ms": 161.14,
+     "network_ms": 73.478,
+     "model_ms": 0.0,
+     "wall_ms": 234.675,
+     "device_energy_j": 0.099348,
+     "system_energy_j": 5.739253
+    }
+   ],
+   "device_energy_j": 0.099348,
+   "system_energy_j": 5.739253
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 2,
+   "latency_ms": 248.39317699979802,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.007,
+     "compute_ms": 162.358,
+     "network_ms": 74.403,
+     "model_ms": 0.0,
+     "wall_ms": 236.872,
+     "device_energy_j": 0.103313,
+     "system_energy_j": 5.785831
+    }
+   ],
+   "device_energy_j": 0.103313,
+   "system_energy_j": 5.785831
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 3,
+   "latency_ms": 241.44825799976388,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.006,
+     "compute_ms": 161.161,
+     "network_ms": 74.218,
+     "model_ms": 0.0,
+     "wall_ms": 235.434,
+     "device_energy_j": 0.106592,
+     "system_energy_j": 5.747209
+    }
+   ],
+   "device_energy_j": 0.106592,
+   "system_energy_j": 5.747209
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 4,
+   "latency_ms": 242.22688999998354,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.008,
+     "compute_ms": 161.213,
+     "network_ms": 74.477,
+     "model_ms": 0.0,
+     "wall_ms": 235.806,
+     "device_energy_j": 0.105217,
+     "system_energy_j": 5.747675
+    }
+   ],
+   "device_energy_j": 0.105217,
+   "system_energy_j": 5.747675
+  },
+  {
+   "mode": "no-migration",
+   "disturbed": false,
+   "trial": 5,
+   "latency_ms": 252.36183900005926,
+   "initial": "edge",
+   "final": "edge",
+   "path": [
+    "edge"
+   ],
+   "migrations": [],
+   "segments": [
+    {
+     "target": "edge",
+     "start": 0,
+     "end": 16,
+     "queue_ms": 0.007,
+     "compute_ms": 168.958,
+     "network_ms": 76.837,
+     "model_ms": 0.0,
+     "wall_ms": 245.877,
+     "device_energy_j": 0.132474,
+     "system_energy_j": 6.046011
+    }
+   ],
+   "device_energy_j": 0.132474,
+   "system_energy_j": 6.046011
+  }
+ ],
+ "trigger_ms": 60.0
+}

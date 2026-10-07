@@ -1,0 +1,260 @@
+{
+ "cache-aware + prefetch": {
+  "requests": 280,
+  "completed": 280,
+  "failed": 0,
+  "throughput_rps": 18.669039814021986,
+  "mean_ms": 42.91286507569306,
+  "p50_ms": 18.72733466848331,
+  "p95_ms": 100.86015222325393,
+  "p99_ms": 843.8774163661138,
+  "deadline_miss_rate": 0.03214285714285714,
+  "device_energy_j": 6.383191,
+  "device_mj_per_req": 22.79711071428571,
+  "system_energy_j": 87.987647,
+  "system_mj_per_req": 314.2415964285714,
+  "migrations": 0,
+  "placements": {
+   "local-npu": 88,
+   "local-cpu": 23,
+   "edge": 169
+  },
+  "model_pushes": 16,
+  "model_push_mb": 76.08583354949951,
+  "caches": {
+   "local-cpu": {
+    "models": [
+     "kws-cnn:1",
+     "sensor-mlp:1"
+    ],
+    "used_mb": 1.201,
+    "capacity_mb": 160.0,
+    "hits": 23,
+    "misses": 0,
+    "evictions": 0
+   },
+   "local-npu": {
+    "models": [
+     "doc-encoder:1",
+     "sensor-mlp:1"
+    ],
+    "used_mb": 36.371,
+    "capacity_mb": 48.0,
+    "hits": 86,
+    "misses": 0,
+    "evictions": 8
+   },
+   "edge": {
+    "models": [
+     "doc-encoder:1",
+     "kws-cnn:1",
+     "vision-cnn:1",
+     "batch-encoder:1"
+    ],
+    "used_mb": 76.076,
+    "capacity_mb": 1024.0,
+    "hits": 166,
+    "misses": 0,
+    "evictions": 0
+   },
+   "cloud": {
+    "models": [],
+    "used_mb": 0.0,
+    "capacity_mb": 8192.0,
+    "hits": 0,
+    "misses": 0,
+    "evictions": 0
+   }
+  },
+  "prefetches": [
+   {
+    "target": "edge",
+    "model": "vision-cnn:1",
+    "ms": 410.13,
+    "bytes": 3258511,
+    "t": 1791288524.6462438
+   },
+   {
+    "target": "local-npu",
+    "model": "sensor-mlp:1",
+    "ms": 1.1,
+    "bytes": 0,
+    "t": 1791288524.7403433
+   },
+   {
+    "target": "edge",
+    "model": "kws-cnn:1",
+    "ms": 125.79,
+    "bytes": 920391,
+    "t": 1791288525.3673475
+   },
+   {
+    "target": "local-npu",
+    "model": "sensor-mlp:1",
+    "ms": 3.22,
+    "bytes": 0,
+    "t": 1791288527.7681172
+   },
+   {
+    "target": "edge",
+    "model": "batch-encoder:1",
+    "ms": 5013.97,
+    "bytes": 37801436,
+    "t": 1791288532.2766502
+   },
+   {
+    "target": "edge",
+    "model": "doc-encoder:1",
+    "ms": 4981.78,
+    "bytes": 37801441,
+    "t": 1791288537.2848752
+   }
+  ],
+  "model_ms_total": 594.438,
+  "cold_requests": 10
+ },
+ "cache-aware": {
+  "requests": 280,
+  "completed": 280,
+  "failed": 0,
+  "throughput_rps": 18.666792133642947,
+  "mean_ms": 54.48013042588887,
+  "p50_ms": 9.388427698695523,
+  "p95_ms": 193.56199970266073,
+  "p99_ms": 944.758817822775,
+  "deadline_miss_rate": 0.02857142857142857,
+  "device_energy_j": 9.043486,
+  "device_mj_per_req": 32.298164285714286,
+  "system_energy_j": 76.471896,
+  "system_mj_per_req": 273.1139142857143,
+  "migrations": 0,
+  "placements": {
+   "local-npu": 104,
+   "local-cpu": 97,
+   "edge": 79
+  },
+  "model_pushes": 17,
+  "model_push_mb": 3.107558250427246,
+  "caches": {
+   "local-cpu": {
+    "models": [
+     "kws-cnn:1",
+     "sensor-mlp:1"
+    ],
+    "used_mb": 1.201,
+    "capacity_mb": 160.0,
+    "hits": 97,
+    "misses": 0,
+    "evictions": 0
+   },
+   "local-npu": {
+    "models": [
+     "batch-encoder:1",
+     "kws-cnn:1"
+    ],
+    "used_mb": 36.923,
+    "capacity_mb": 48.0,
+    "hits": 104,
+    "misses": 0,
+    "evictions": 12
+   },
+   "edge": {
+    "models": [
+     "vision-cnn:1"
+    ],
+    "used_mb": 3.106,
+    "capacity_mb": 1024.0,
+    "hits": 79,
+    "misses": 0,
+    "evictions": 0
+   },
+   "cloud": {
+    "models": [],
+    "used_mb": 0.0,
+    "capacity_mb": 8192.0,
+    "hits": 0,
+    "misses": 0,
+    "evictions": 0
+   }
+  },
+  "prefetches": [],
+  "model_ms_total": 1044.999,
+  "cold_requests": 17
+ },
+ "cache-oblivious": {
+  "requests": 280,
+  "completed": 280,
+  "failed": 0,
+  "throughput_rps": 18.6680007342692,
+  "mean_ms": 150.09897511147787,
+  "p50_ms": 15.894842466195769,
+  "p95_ms": 816.0363671813932,
+  "p99_ms": 2992.265634094671,
+  "deadline_miss_rate": 0.09285714285714286,
+  "device_energy_j": 4.555966,
+  "device_mj_per_req": 16.271307142857143,
+  "system_energy_j": 214.481448,
+  "system_mj_per_req": 766.0051714285714,
+  "migrations": 0,
+  "placements": {
+   "local-npu": 112,
+   "edge": 160,
+   "cloud": 5,
+   "local-cpu": 3
+  },
+  "model_pushes": 11,
+  "model_push_mb": 115.24365043640137,
+  "caches": {
+   "local-cpu": {
+    "models": [
+     "kws-cnn:1",
+     "sensor-mlp:1"
+    ],
+    "used_mb": 1.201,
+    "capacity_mb": 160.0,
+    "hits": 3,
+    "misses": 0,
+    "evictions": 0
+   },
+   "local-npu": {
+    "models": [
+     "vision-cnn:1",
+     "kws-cnn:1",
+     "sensor-mlp:1"
+    ],
+    "used_mb": 4.306,
+    "capacity_mb": 48.0,
+    "hits": 109,
+    "misses": 0,
+    "evictions": 0
+   },
+   "edge": {
+    "models": [
+     "doc-encoder:1",
+     "kws-cnn:1",
+     "vision-cnn:1",
+     "batch-encoder:1"
+    ],
+    "used_mb": 76.076,
+    "capacity_mb": 1024.0,
+    "hits": 157,
+    "misses": 0,
+    "evictions": 0
+   },
+   "cloud": {
+    "models": [
+     "vision-cnn:1",
+     "batch-encoder:1"
+    ],
+    "used_mb": 39.153,
+    "capacity_mb": 8192.0,
+    "hits": 5,
+    "misses": 0,
+    "evictions": 0
+   }
+  },
+  "prefetches": [],
+  "model_ms_total": 9390.315,
+  "cold_requests": 11
+ }
+}
